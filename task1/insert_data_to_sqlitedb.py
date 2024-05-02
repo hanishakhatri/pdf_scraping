@@ -28,7 +28,7 @@ def main():
     """Execute the main functionality of the program"""
     
     csv_file = 'lookup.csv'
-    db_file = 'data/lookup.db'
+    db_file = 'flask_app/data/lookup.db'
 
     try:
         # Read data from CSV
@@ -42,6 +42,7 @@ def main():
 
         # Insert data into the table
         insert_data(conn, data)
+        print("Data inserted successfully ")
 
     except Exception as e:
         print("An error occurred:", e)

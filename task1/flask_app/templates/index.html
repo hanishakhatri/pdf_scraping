@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Lookup</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Document Lookup</h1>
+    <p>This is a simple document lookup application.</p>
+    <form action="/lookup" method="get">
+        <label for="assigned_integer">Enter Assigned Integer:</label>
+        <input type="text" id="assigned_integer" name="assigned_integer">
+        <button type="submit">Lookup Document</button>
+    </form>
+    <div id="result"></div>
+</body>
+</html>
