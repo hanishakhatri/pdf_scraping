@@ -1,3 +1,4 @@
+/* added css for the home page */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -44,7 +45,43 @@ button[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+/* add css for the result page  */
 #result {
     text-align: center;
     margin-top: 20px;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+/* added css for the GO Back Button */
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 20px;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
 }
