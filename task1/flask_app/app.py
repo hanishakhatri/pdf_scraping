@@ -1,6 +1,6 @@
 # Import necessary modules
 import sqlite3
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 
 # Create a Flask application instance
 app = Flask(__name__)
@@ -62,3 +62,7 @@ def lookup():
     finally:
         # Close the database connection after use
         conn.close()
+        
+        
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
