@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  database:
+    image: keinos/sqlite3:latest
+    volumes:
+      -  ./flask_app_task2/data:/data
+    command: sqlite3 /data/mapToProduct.db
+
+  python-server:
+    image: flask-app-task2
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    environment:
+      DB_FILE: \data\mapToProduct.db
