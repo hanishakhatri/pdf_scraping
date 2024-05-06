@@ -39,11 +39,11 @@ This script will create the `lookup` table in the SQLite database and insert the
 
 3. Build and start the Docker containers:
 
-docker build -t flask-app:latest .
-cd .. 
-docker-compose up -d  
-docker-compose ps
-docker-compose logs -f
+- docker build -t flask-app:latest .
+- cd .. 
+- docker-compose up -d  
+- docker-compose ps
+- docker-compose logs -f
 
 
 
@@ -52,9 +52,9 @@ docker-compose logs -f
 
 1. Build and start the Docker containers:
 
-cd task2/flask-app-task2
-docker build -t flask-app-task-2:latest .
-cd .. 
-docker-compose up -d  
-docker-compose ps
-docker-compose logs -f
+- cd task2/flask-app-task2
+- docker build -t flask-app-task-2:latest .
+- cd .. 
+- docker-compose up -d  
+- docker-compose ps
+- docker-compose logs -f
