@@ -18,12 +18,6 @@ Before running the application, make sure you have the following installed:
 - source env/bin/activate  # On Windows, use env\Scripts\activate
 
 ## Project Structure
-├── docker-compose.yml
-├── flask_app
-│   └── data
-│       └── lookup.db
-├── insert_data_to_sqlitedb.py
-└── lookup.csv
 
 - `docker-compose.yml`: Docker Compose configuration file that defines the services for the Flask app and SQLite database.
 - `flask_app/data/lookup.db`: SQLite database file that stores the data.
@@ -56,22 +50,9 @@ docker-compose logs -f
 ## Task2 - Identifying the relevant "artikelnummer" (product numbers) for each entry in the PDF documents using the `mapToProducts.csv` file.
 
 
-## Project Structure 
+1. Build and start the Docker containers:
 
-├── flask_app_task2/
-│   ├── init.py
-│   ├── app.py
-│   └── data/
-│       └── mapToProduct.db
-├── docker-compose.yml
-├── requirements.txt
-├── README.md
-├── mapToProducts.csv
-├── lookup.csv
-└── output.csv
-
-3. Build and start the Docker containers:
-
+cd task2/flask-app-task2
 docker build -t flask-app-task-2:latest .
 cd .. 
 docker-compose up -d  
