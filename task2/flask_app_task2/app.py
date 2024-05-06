@@ -193,11 +193,11 @@ def identify_product_numbers(document_number):
         output_csv_file = write_results_to_csv(results,output_csv_file = OUTPUT_CSV_FILE)
 
         # Return the path to the output CSV file
-        return jsonify({"message": "Results written to", "output_csv_file": output_csv_file})
+        return jsonify({"message": "Results written to csv file", "output_csv_file": output_csv_file})
     except Exception as e:
         # Return a JSON response with the error message and HTTP status code 500 (Internal Server Error)
         error_message = {'error': str(e)}
         return jsonify(error_message), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)
