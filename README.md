@@ -12,6 +12,11 @@ Before running the application, make sure you have the following installed:
 - Docker
 - Docker Compose
 
+## create virtual enviroment 
+
+- python -m venv env
+- source env/bin/activate  # On Windows, use env\Scripts\activate
+
 ## Project Structure
 ├── docker-compose.yml
 ├── flask_app
@@ -47,3 +52,28 @@ docker-compose ps
 docker-compose logs -f
 
 
+
+## Task2 - Identifying the relevant "artikelnummer" (product numbers) for each entry in the PDF documents using the `mapToProducts.csv` file.
+
+
+## Project Structure 
+
+├── flask_app_task2/
+│   ├── init.py
+│   ├── app.py
+│   └── data/
+│       └── mapToProduct.db
+├── docker-compose.yml
+├── requirements.txt
+├── README.md
+├── mapToProducts.csv
+├── lookup.csv
+└── output.csv
+
+3. Build and start the Docker containers:
+
+docker build -t flask-app-task-2:latest .
+cd .. 
+docker-compose up -d  
+docker-compose ps
+docker-compose logs -f
