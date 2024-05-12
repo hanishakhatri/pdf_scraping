@@ -2,6 +2,8 @@ import PyPDF2
 import re
 import json 
 import csv
+import csv
+import sqlite3
 
 def extract_text_from_pdf(pdf_path):
     """
@@ -48,8 +50,7 @@ def write_items_to_csv(items, csv_file):
 
     print("Data saved to", csv_file)
     
-import csv
-import sqlite3
+
 
 def csv_to_sqlite(input_file, db_file, table_name):
     """
