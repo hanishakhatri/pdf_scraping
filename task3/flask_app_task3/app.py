@@ -47,6 +47,51 @@ def write_items_to_csv(items, csv_file):
         writer.writerows(items)
 
     print("Data saved to", csv_file)
+    
+import csv
+import sqlite3
+
+def csv_to_sqlite(input_file, db_file, table_name):
+    """
+    Convert a CSV file to a SQLite database table.
+
+    Parameters:
+    input_file (str): Path to the input CSV file.
+    db_file (str): Path to the SQLite database file.
+    table_name (str): Name of the SQLite database table.
+    """
+    # Connect to the SQLite database
+    conn = sqlite3.connect(db_file)
+    cursor = conn.cursor()
+
+    # Open the input CSV file
+    with open(input_file, mode='r', newline='', encoding='utf-8') as csv_file:
+        reader = csv.reader(csv_file)
+        # Extract header from the CSV file
+        header = next(reader)
+        # Create a table in the database with the provided table name
+        cursor.execute(f'DROP TABLE IF EXISTS {table_name}')
+        cursor.execute(f'CREATE TABLE {table_name} ({", ".join(header)})')
+        # Insert the data from the CSV file into the table
+        for row in reader:
+            cursor.execute(f'INSERT INTO {table_name} VALUES ({", ".join("?" * len(row))})', row)
+
+    # Commit the changes and close the connection
+    conn.commit()
+    conn.close()
+
+    print(f"CSV file '{input_file}' converted to SQLite database table '{table_name}' in '{db_file}'")
+
+
+def write_results_to_csv(results,output_csv_file):
+    """Writes the results to a CSV file."""
+    with open(output_csv_file, 'w', newline='') as csvfile:
+        csv_writer = csv.writer(csvfile)
+        csv_writer.writerow(['entry_number','entry_body','quantity','assigned_integer','belegnummer', 'product_number'])
+        csv_writer.writerows(results)
+    return output_csv_file
+
+
 
 def extract_items_from_text(lines):
     items = []
@@ -83,6 +128,20 @@ def extract_items_from_text(lines):
             
     return items
 
+def sqlite_query(datafile):
+    conn = sqlite3.connect(datafile)
+    cursor = conn.cursor()
+
+    # Execute the query
+    cursor.execute("""
+        SELECT entry_data.entry_number, entry_data.entry_body, entry_data.quantity, combined_data.assigned_integer, combined_data.belegnummer, combined_data.product_number
+        FROM entry_data
+        JOIN combined_data ON entry_data.entry_number = combined_data.entry_number
+    """)
+
+    # Fetch all rows from the result set
+    rows = cursor.fetchall()
+    return rows
 
 def main():
     # Example usage:
@@ -92,6 +151,13 @@ def main():
     lines = extracted_text.strip().split('\n')
     list_extracted_data = extract_items_from_text(lines)
     write_items_to_csv(list_extracted_data,csv_file)
+    # Example usage:
+    input_file = 'data.csv'  # Path to the input combined CSV file
+    db_file = 'data.db'  # Path to the output SQLite database file
+    table_name = 'entry_data'  # Name of the SQLite database table
+    csv_to_sqlite(input_file, db_file, table_name)
+    rows = sqlite_query('data.db')
+    write_results_to_csv(rows,output_csv_file = "output.csv")
 
 if __name__ == "__main__":
     main()
