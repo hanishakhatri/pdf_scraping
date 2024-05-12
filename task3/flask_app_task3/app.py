@@ -145,19 +145,23 @@ def sqlite_query(datafile):
 
 def main():
     # Example usage:
-    pdf_path = 'pdfs/29386.pdf'
-    csv_file = "29386.csv"
-    extracted_text = extract_text_from_pdf(pdf_path)
-    lines = extracted_text.strip().split('\n')
-    list_extracted_data = extract_items_from_text(lines)
-    write_items_to_csv(list_extracted_data,csv_file)
-    # Example usage:
-    input_file = 'data.csv'  # Path to the input combined CSV file
-    db_file = 'data.db'  # Path to the output SQLite database file
-    table_name = 'entry_data'  # Name of the SQLite database table
-    csv_to_sqlite(input_file, db_file, table_name)
-    rows = sqlite_query('data.db')
-    write_results_to_csv(rows,output_csv_file = "output.csv")
+    try :
+        pdf_path = 'pdfs/29386.pdf'
+        csv_file = "29386.csv"
+        extracted_text = extract_text_from_pdf(pdf_path)
+        lines = extracted_text.strip().split('\n')
+        list_extracted_data = extract_items_from_text(lines)
+        write_items_to_csv(list_extracted_data,csv_file)
+        # Example usage:
+        input_file = 'data.csv'  # Path to the input combined CSV file
+        db_file = 'data.db'  # Path to the output SQLite database file
+        table_name = 'entry_data'  # Name of the SQLite database table
+        csv_to_sqlite(input_file, db_file, table_name)
+        rows = sqlite_query('data.db')
+        write_results_to_csv(rows,output_csv_file = "output.csv")
+        
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 if __name__ == "__main__":
     main()
