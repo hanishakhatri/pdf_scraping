@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  database:
+    image: keinos/sqlite3:latest
+    volumes:
+      -  ./flask_app/data:/data
+    command: sqlite3 /data/lookup.db
+
+  python-server:
+    image: flask-app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    environment:
+      DB_FILE: /data/lookup.db
+
+  
+

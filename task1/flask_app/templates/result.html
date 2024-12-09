@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Lookup Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Document Lookup Result</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Document Number</th>
+                <th>Assigned Integer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ belegnummer }}</td>
+                <td>{{ assigned_integer }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="button-container">
+        <a href="/" class="button">Go back</a>
+    </div>
+</body>
+</html>
