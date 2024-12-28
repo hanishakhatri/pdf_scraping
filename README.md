@@ -1,5 +1,4 @@
-# de-assignment-tenderfix
-DE Assignment by TenderFix
+# Scrape pdf file
 
 # TASK-1  Flask App with SQLite Database
 
